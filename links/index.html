@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Links • Talha</title>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+  <script>
+    // If loaded directly (not via SPA), redirect to homepage which will load this content
+    if (!document.referrer.includes(window.location.hostname) ||
+        !window.history.state) {
+      var path = window.location.pathname;
+      // Only redirect if we're not already on index
+      if (path !== "/" && path !== "/index.html") {
+        window.location.replace("/?redirect=" + encodeURIComponent(path));
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <section id="spa-content" class="panel panel--main">
+      <div class="prose">
+        <h1>Links</h1>
+        <div class="ornament" aria-hidden="true"><span>✦</span></div>
+        <ul>
+          <li><a href="#" target="_blank" rel="noreferrer">GitHub (placeholder)</a></li>
+          <li><a href="#" target="_blank" rel="noreferrer">Resume (placeholder)</a></li>
+        </ul>
+      </div>
+      <img class="gurren" src="/assets/img/gurren.png" alt="" aria-hidden="true" />
+    </section>
+  </body>
+</html>

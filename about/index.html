@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About • Talha</title>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+  <script>
+    // If loaded directly (not via SPA), redirect to homepage which will load this content
+    if (!document.referrer.includes(window.location.hostname) ||
+        !window.history.state) {
+      var path = window.location.pathname;
+      // Only redirect if we're not already on index
+      if (path !== "/" && path !== "/index.html") {
+        window.location.replace("/?redirect=" + encodeURIComponent(path));
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <section id="spa-content" class="panel panel--main">
+      <div class="prose">
+        <h1>About</h1>
+        <div class="ornament" aria-hidden="true"><span>✦</span></div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h2>What I'm into</h2>
+        <ul>
+          <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+          <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+        </ul>
+        <h2>Contact</h2>
+        <ul>
+          <li>Email: lorem@ipsum.dev</li>
+          <li>GitHub: @lorem</li>
+          <li>LinkedIn: /in/lorem</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

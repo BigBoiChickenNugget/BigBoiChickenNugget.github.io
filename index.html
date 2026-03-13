@@ -1,126 +1,404 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>Talha Ahmad — Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-  <header class="header fade">
-    <div class="nav">
-      <a class="brand" href="index.html"><span class="pixel">▶</span> <strong>TALHA</strong> <span class="muted">AHMAD</span></a>
-      <nav class="links">
-        <a data-href="index.html" href="index.html">Home</a>
-        <a data-href="experience.html" href="experience.html">Experience</a>
-        <a data-href="projects.html" href="projects.html">Projects</a>
-        <a data-href="contact.html" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Talha</title>
 
-  <main class="container">
-    <!-- Hero -->
-    <section class="panel reveal">
-      <div class="h1">Hi, I’m Talha.</div>
-      <p class="muted">
-        I'm a Mechatronics Engineering student at McMaster University. I am very passionate about embedded systems, control systems, and DSP development.
-      </p>
-      <div class="menu">
-        <a href="experience.html"><span class="pixel caret">▶</span> Experience</a>
-        <a href="projects.html"><span class="pixel caret">▶</span> Projects</a>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+
+    <style>
+      .navlist a.is-active { text-decoration: underline; }
+      .brand__link.is-active { text-decoration: underline; }
+
+      /* ── Topbar inner: stretch to fill height ── */
+      .topbar {
+        /* override so canvas can fill edge-to-edge vertically */
+        padding: 0;
+      }
+      .topbar__inner {
+        padding: 0 16px;
+        min-height: 52px;
+        align-items: stretch; /* children fill full height */
+      }
+
+      /* ── Brand / car ── */
+      .brand {
+        display: flex;
+        align-items: center;
+      }
+      .brand-car {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .car-sprite {
+        display: inline-block;
+        width: 65px;
+        height: 28px;
+        background-image: url('/assets/img/ae86_strip.png');
+        background-repeat: no-repeat;
+        background-size: 520px 28px;
+        background-position: 0px 0px;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        flex-shrink: 0;
+      }
+      .brand-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        white-space: nowrap;
+      }
+
+      /* ── Middle zone: typewriter ── */
+      .topbar-middle {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        min-width: 0;
+      }
+      .typewriter {
+        font-size: 13px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: rgba(180, 220, 180, 0.85);
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 0;
+      }
+      .typewriter__text {
+        /* text filled in by JS */
+      }
+      .typewriter__cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: rgba(180, 220, 180, 0.85);
+        margin-left: 2px;
+        vertical-align: middle;
+        animation: cursor-blink 1s step-end infinite;
+      }
+      @keyframes cursor-blink {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+
+      /* ── Right zone: cmatrix + pills ── */
+      .topbar__meta {
+        display: flex;
+        align-items: stretch; /* let canvas fill height */
+        gap: 8px;
+        flex-wrap: nowrap;
+      }
+
+      /* Matrix canvas */
+      #matrix-canvas {
+        display: block;
+        align-self: center;
+        opacity: 0.90;
+        height: 36px;
+      }
+
+      /* Pills need to re-center themselves since topbar stretches */
+      .pill {
+        align-self: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="site-bg" aria-hidden="true"></div>
+
+    <header class="topbar frame">
+      <div class="topbar__inner">
+
+        <!-- Left: car + hostname -->
+        <div class="brand">
+          <a class="brand-car" href="/" id="home-link" aria-label="damhahlat home">
+            <span class="car-sprite" id="car-sprite" aria-hidden="true"></span>
+            <span class="brand-label">[damhahlat@home ~]$</span>
+          </a>
+        </div>
+
+        <!-- Middle: typewriter -->
+        <div class="topbar-middle">
+          <div class="typewriter">
+            <span class="typewriter__text" id="tw-text"></span>
+            <span class="typewriter__cursor" id="tw-cursor"></span>
+          </div>
+        </div>
+
+        <!-- Right: matrix + status + clock -->
+        <div class="topbar__meta">
+          <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+          <span class="pill" id="status-pill" title="vibing">
+            <span class="dot"></span> calm
+          </span>
+          <span class="pill" title="Local time">
+            <span aria-hidden="true">🕒</span> <span id="clock">--:--</span>
+          </span>
+        </div>
+
       </div>
-    </section>
+    </header>
 
-    <!-- Skills -->
-    <section id="skills" class="panel reveal">
-      <div class="section-title">Skills</div>
-      <div class="cards two">
-        <div class="card">
-          <h3>Languages</h3>
-          <div class="badges">
-            <span class="badge">C</span><span class="badge">C++</span><span class="badge">Python</span><span class="badge">Java</span>
-            <span class="badge">MbedOS</span><span class="badge">RTOS</span><span class="badge">Matlab</span><span class="badge">Maple</span>
-            <span class="badge">JavaScript</span><span class="badge">Bash</span>
-          </div>
+    <main class="frame shell" id="content">
+      <aside class="panel panel--nav" aria-label="Primary navigation">
+        <h2 class="panel__title">Navigate</h2>
+        <nav>
+          <ul class="navlist">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/musings/">Musings</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/links/">Links</a></li>
+            <li><a href="/now/">Now</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="panel panel--main" id="spa-content">
+        <div class="prose">
+          <h1>Hi, I'm Talha.</h1>
+          <div class="ornament" aria-hidden="true"><span>✦</span></div>
+          <p>I'm a mechatronics engineering student at McMaster University who's aiming to specialize in embedded and firmware work.</p>
+          <p>This site is my online abode for projects, musings, and the occasional game or music write-up.</p>
+          <p>While you browse, I recommend using the music player at the bottom.</p>
         </div>
+        <img class="setzer" src="/assets/img/setzer.png" alt="" aria-hidden="true" />
+      </section>
 
-        <div class="card">
-          <h3>Developer Tools</h3>
-          <div class="badges">
-            <span class="badge">Git</span><span class="badge">Docker</span><span class="badge">Arduino</span>
-            <span class="badge">STM32Cube</span><span class="badge">KeilStudio</span><span class="badge">Linux</span>
+      <section class="music-row" aria-label="Music player">
+        <div class="musicbox">
+          <div class="musicbox__screen">
+            <div class="musicbox__label">NOW PLAYING</div>
+            <div class="musicbox__title" id="np-track">Celes' Theme</div>
+            <div class="musicbox__meta">
+              <span id="np-game">Final Fantasy VI</span>
+              <span class="musicbox__sep">•</span>
+              <span id="np-index">1/3</span>
+            </div>
           </div>
-        </div>
-
-        <div class="card">
-          <h3>Software</h3>
-          <div class="badges">
-            <span class="badge">KiCad</span><span class="badge">Altium</span><span class="badge">Inventor</span>
-            <span class="badge">AutoCAD</span><span class="badge">Fusion 360</span><span class="badge">Multisim</span>
-            <span class="badge">Ansys Granta Edu</span>
+          <div class="musicbox__controls">
+            <button class="mbtn mbtn--side" id="btn-prev">⟨⟨</button>
+            <button class="mbtn mbtn--play" id="btn-play">▶</button>
+            <button class="mbtn mbtn--side" id="btn-next">⟩⟩</button>
           </div>
+          <audio id="audio" preload="auto"></audio>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Interests -->
-    <section class="panel reveal">
-      <div class="section-title">Interests</div>
-      <div class="shelf">
-        <div class="card">
-          <h3>Music I loop</h3>
-          <div class="chips">
-            <span class="chip">Children of Bodom</span>
-            <span class="chip">Nobuo Uematsu</span>
-            <span class="chip">Mors Principium Est</span>
-            <span class="chip">The Black Dahlia Murder</span>
-            <span class="chip">Periphery</span>
-            <span class="chip">Obscura</span>
-          </div>
-        </div>
+    <script src="/assets/js/spa.js"></script>
+    <script>
+    /* Handle ?redirect=/path/ from sub-page direct loads */
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var redirect = params.get("redirect");
+      if (redirect) {
+        // Clean the URL first, then let SPA navigate
+        history.replaceState({}, "", redirect);
+        // Small delay to let spa.js initialise first
+        setTimeout(function() {
+          var link = document.querySelector('.navlist a[href="' + redirect + '"]');
+          if (link) link.click();
+          else {
+            // Fallback: fetch directly
+            var url = new URL(redirect, window.location.origin);
+            fetch(url.href)
+              .then(function(r) { return r.text(); })
+              .then(function(text) {
+                var doc = new DOMParser().parseFromString(text, "text/html");
+                var incoming = doc.getElementById("spa-content");
+                var current  = document.getElementById("spa-content");
+                if (incoming && current) {
+                  current.innerHTML = incoming.innerHTML;
+                  if (doc.title) document.title = doc.title;
+                }
+              });
+          }
+        }, 80);
+      }
+    })();
+    </script>
+    <script src="/assets/js/main.js"></script>
 
-        <div class="card">
-          <h3>Games I love</h3>
-          <div class="chips">
-            <span class="chip">Hollow Knight</span>
-            <span class="chip">Silksong (<s>manifesting</s>)</span>
-            <span class="chip">Final Fantasy X</span>
-            <span class="chip">Final Fantasy VII (original >>> remake)</span>
-            <span class="chip">Persona 5</span>
-            <span class="chip">Persona 4</span>
-            <span class="chip">Chrono Trigger</span>
-            <span class="chip">Cyberpunk 2077</span>
-          </div>
-        </div>
+    <script>
+    /* ════════════════════════════════
+       AE86 SPIN
+    ════════════════════════════════ */
+    (function() {
+      var sprite = document.getElementById("car-sprite");
+      if (!sprite) return;
+      var SLOT_W = 65, FRAMES = 8, frame = 0, timer = null;
+      function setFrame(f) {
+        frame = ((f % FRAMES) + FRAMES) % FRAMES;
+        sprite.style.backgroundPosition = (-frame * SLOT_W) + "px 0px";
+      }
+      function spin() {
+        timer = setInterval(function() { setFrame(frame + 1); }, 90);
+        setTimeout(function() {
+          clearInterval(timer); timer = null;
+          setFrame(0);
+          setTimeout(spin, 4500);
+        }, 90 * FRAMES * 2); // 2 full rotations
+      }
+      setFrame(0);
+      setTimeout(spin, 2000);
+    })();
+    </script>
 
-        <div class="card">
-          <h3>Books</h3>
-          <div class="chips">
-            <span class="chip">The Stranger (Camus)</span>
-            <span class="chip">Brave New World</span>
-            <span class="chip">1984</span>
-            <span class="chip">Crime and Punishment</span>
-            <span class="chip">No Longer Human</span>
-            <span class="chip">Don Quixote</span>
-          </div>
-        </div>
+    <script>
+    /* ════════════════════════════════
+       TYPEWRITER
+    ════════════════════════════════
+       Types each phrase, pauses, deletes, moves to next.
+       Realistic variable speed — slightly random per char.
+    ════════════════════════════════ */
+    (function() {
+      var el = document.getElementById("tw-text");
+      if (!el) return;
 
-        <div class="card">
-          <h3>Manga</h3>
-          <div class="chips">
-            <span class="chip">Vagabond</span>
-            <span class="chip">Berserk</span>
-            <span class="chip">Gintama</span>
-            <span class="chip">20th Century Boys</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+      var phrases = [
+        "gcc -O2 -o main main.c",
+        "make && ./run",
+        "git commit -m \"fix\"",
+        "ssh takumi@akina.local",
+        "while(1) { learn(); }",
+        "grep -r \"TODO\" .   # 47 matches",
+        "printf(\"hello\\n\");",
+        "sudo rm -rf node_modules/",
+        "./a.out   // segfault :(",
+        "cat /proc/self/status",
+      ];
 
-  <script src="app.js"></script>
-</body>
+      var idx = 0, pos = 0, deleting = false;
+
+      // Randomise typing speed per char for realism
+      function typeDelay()   { return 60 + Math.random() * 60; }
+      function deleteDelay() { return 30 + Math.random() * 20; }
+
+      function tick() {
+        var phrase = phrases[idx];
+
+        if (!deleting) {
+          // Type one char
+          pos++;
+          el.textContent = phrase.slice(0, pos);
+          if (pos === phrase.length) {
+            // Finished typing — pause then start deleting
+            setTimeout(function() { deleting = true; tick(); }, 1800);
+            return;
+          }
+          setTimeout(tick, typeDelay());
+        } else {
+          // Delete one char
+          pos--;
+          el.textContent = phrase.slice(0, pos);
+          if (pos === 0) {
+            // Finished deleting — pause then move to next phrase
+            deleting = false;
+            idx = (idx + 1) % phrases.length;
+            setTimeout(tick, 500);
+            return;
+          }
+          setTimeout(tick, deleteDelay());
+        }
+      }
+
+      // Start after a short delay
+      setTimeout(tick, 1200);
+    })();
+    </script>
+
+    <script>
+    /* ════════════════════════════════
+       CMATRIX RAIN — no background box
+       Fills the full topbar height
+    ════════════════════════════════ */
+    (function() {
+      var canvas = document.getElementById("matrix-canvas");
+      if (!canvas) return;
+      var ctx = canvas.getContext("2d");
+
+      // Size canvas to match topbar height exactly
+      function resize() {
+        canvas.height = 36;
+        canvas.width  = 180;
+        initDrops();
+      }
+
+      var CHARS = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789";
+      var FONT  = 9;
+      var drops = [];
+
+      function initDrops() {
+        var cols = Math.floor(canvas.width / FONT);
+        drops = [];
+        for (var i = 0; i < cols; i++) {
+          // Stagger starts so they don't all begin at top
+          drops.push(Math.random() * -(canvas.height / FONT));
+        }
+      }
+
+      function randChar() {
+        return CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+
+      function draw() {
+        var h = canvas.height;
+        var w = canvas.width;
+        var cols = Math.floor(w / FONT);
+
+        // Fade — transparent so topbar bg shows through
+        ctx.fillStyle = "rgba(0, 0, 0, 0)";
+        ctx.clearRect(0, 0, w, h);
+
+        // Subtle column fade trails using shadow rects
+        ctx.fillStyle = "rgba(0,10,0, 0.25)";
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.font = FONT + "px monospace";
+
+        for (var i = 0; i < cols; i++) {
+          var y = Math.floor(drops[i]) * FONT;
+
+          // Head — bright
+          ctx.fillStyle = "#88ffaa";
+          ctx.fillText(randChar(), i * FONT, y);
+
+          // One step behind — mid
+          if (drops[i] > 1) {
+            ctx.fillStyle = "#00bb44";
+            ctx.fillText(randChar(), i * FONT, y - FONT);
+          }
+
+          // Two steps — dim
+          if (drops[i] > 2) {
+            ctx.fillStyle = "#007722";
+            ctx.fillText(randChar(), i * FONT, y - FONT * 2);
+          }
+
+          // Reset when off bottom
+          if (y > h && Math.random() > 0.90) {
+            drops[i] = 0;
+          }
+          drops[i] += 0.45;
+        }
+      }
+
+      resize();
+      setInterval(draw, 55);
+    })();
+    </script>
+
+  </body>
 </html>

@@ -1,0 +1,247 @@
+/* ════════════════════════════════
+   PANELS  —  light parchment cards
+   ════════════════════════════════ */
+.panel {
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, #e4edda, #d4e0cc);
+  border: 1px solid rgba(100,130,110,.28);
+  box-shadow: var(--shadow);
+  padding: 18px;
+
+  /* ── KEY FIX: force dark ink on every descendant ── */
+  color: #18222c !important;
+}
+
+.panel--nav {
+  background: linear-gradient(160deg, #dfe9d6, #d0ddc8);
+}
+
+/* Every text element inside any panel gets dark ink explicitly */
+.panel h1, .panel h2, .panel h3, .panel h4,
+.panel p, .panel li, .panel span, .panel label,
+.panel div {
+  color: #18222c;
+}
+
+.panel .subtle {
+  color: #3d4f5c;
+  opacity: 0.80;
+}
+
+/* ── Nav list ── */
+.panel__title {
+  margin: 0 0 10px 0;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #3d4f5c;
+}
+
+.navlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.navlist a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(80,110,100,.18);
+  background: rgba(255,255,255,.35);
+  text-decoration: none;
+
+  /* explicit dark color — overrides global a { color: var(--accent) } */
+  color: #18222c !important;
+
+  font-size: 13px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.navlist a:hover {
+  background: rgba(255,255,255,.55);
+  border-color: rgba(37,106,136,.30);
+  text-shadow: none;
+  color: #18222c !important;
+}
+.navlist a.is-active {
+  text-decoration: underline;
+  color: #18222c !important;
+}
+
+/* ── Prose (main content) ── */
+.prose {
+  /* leave room for the decorative sticker on the right */
+  max-width: calc(100% - 260px);
+  min-width: 280px;
+}
+
+.prose h1 {
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  letter-spacing: .2px;
+  color: #18222c;
+}
+.prose p  { margin: 0 0 10px 0; color: #18222c; }
+.prose ul { margin: 6px 0 10px; padding-left: 20px; }
+.prose li { margin-bottom: 5px; color: #18222c; }
+
+.prose a {
+  color: #1a6080 !important;
+}
+.prose a:hover {
+  color: #0e4a63 !important;
+  text-shadow: none;
+}
+
+/* ── Ornament divider ── */
+.divider {
+  height: 1px;
+  background: rgba(10,16,22,.14);
+  margin: 14px 0;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 14px 0;
+  opacity: .45;
+}
+.ornament::before, .ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: rgba(10,16,22,.22);
+}
+.ornament span { font-size: 12px; letter-spacing: 1px; }
+
+/* ════════════════════════════════
+   TOPBAR WIDGETS
+   ════════════════════════════════ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.10);
+  color: var(--muted);
+  letter-spacing: .3px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5dba7d;
+  box-shadow: 0 0 6px #5dba7d99;
+}
+
+/* ════════════════════════════════
+   FOOTER
+   ════════════════════════════════ */
+.footer a {
+  color: rgba(235,245,245,.85);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(235,245,245,.40);
+}
+.footer a:hover { border-bottom-color: rgba(235,245,245,.75); }
+
+/* ════════════════════════════════
+   MUSIC PLAYER
+   ════════════════════════════════ */
+.music-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.musicbox {
+  width: min(460px, calc(100% - 32px));
+  border-radius: 18px;
+  border: 1px solid rgba(230,245,245,.13);
+  background: rgba(8,12,18,.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.55);
+  padding: 16px;
+  color: rgba(240,250,250,.92);
+}
+
+.musicbox__screen {
+  border-radius: 12px;
+  border: 1px solid rgba(230,245,245,.10);
+  background: linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.22));
+  padding: 12px 16px;
+}
+
+.musicbox__label {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .80;
+}
+.musicbox__title {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgba(240,250,250,.95);
+}
+.musicbox__meta {
+  margin-top: 4px;
+  font-size: 11px;
+  color: rgba(240,250,250,.70);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.musicbox__sep { opacity: .45; }
+
+.musicbox__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.mbtn {
+  border-radius: 12px;
+  border: 1px solid rgba(230,245,245,.14);
+  background: rgba(0,0,0,.32);
+  color: rgba(240,250,250,.88);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.mbtn:hover {
+  border-color: rgba(125,196,255,.35);
+  box-shadow: 0 0 0 2px rgba(125,196,255,.10);
+}
+.mbtn--play {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  font-size: 20px;
+  background: rgba(0,0,0,.44);
+}
+.mbtn--side {
+  width: 44px;
+  height: 44px;
+  font-size: 14px;
+}
+
+.ytwrap {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}

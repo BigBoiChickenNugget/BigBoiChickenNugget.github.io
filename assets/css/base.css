@@ -1,0 +1,38 @@
+/* assets/css/base.css */
+:root { color-scheme: dark; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font: 14px/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+  letter-spacing: .1px;
+}
+
+/* DO NOT set a { color: inherit } globally — each context controls link color */
+
+img { max-width: 100%; height: auto; display: block; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  z-index: 999;
+}
+.skip-link:focus { left: 8px; }
+
+.small { font-size: 12px; }
+
+html {
+  cursor: url("../img/keyblade.cur"), auto;
+}
+
+a, button {
+  cursor: url("../img/keyblade.cur"), pointer;
+}
