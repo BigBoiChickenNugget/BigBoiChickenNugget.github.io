@@ -149,10 +149,10 @@
       "embedded systems\nfirmware\ntelemetry\navionics\nrobotics\nJRPG soundtracks\nanime aesthetics",
     "/home/talha/projects/visionnode.txt":
       "VisionNode\n\nBuilt a real-time facial recognition system using an ESP32-CAM for imaging and an STM32 for control/display logic.\n\nStack: ESP32-CAM, STM32, Edge Impulse, TensorFlow Lite, MbedOS.",
-    "/home/talha/projects/self_balancing_robot.txt":
-      "Self-Balancing Robot\n\nDesigned and 3D printed a two-wheel robot, then implemented PID stabilization using MPU6050 IMU feedback and UART logging for tuning.",
-    "/home/talha/projects/digital_counter.txt":
-      "Digital Counter Display\n\nSequential logic project using JK flip-flops and multiplexers to drive a stable 7-segment display sequence.",
+    "/home/talha/projects/jamdeck.txt":
+      "JamDeck\n\nMakeUofT 2026-winning project that represents the more playful, product-minded side of how I like to build.",
+    "/home/talha/gamereviews/index.txt":
+      "Game Reviews\n\nA separate shelf for the Steam reviews and game writeups I actually care enough about to archive properly.",
     "/home/talha/experience/taylor_systems.txt":
       "Taylor Systems - Embedded Systems Engineer Intern\n\nRedesigned Modbus RS-485 hardware, improved acquisition success from 83% to 98%, programmed ESP32/Arduino interfaces, and built MQTT telemetry simulation tooling.",
     "/home/talha/experience/rocketry.txt":
@@ -169,9 +169,10 @@
   const directories = {
     "/": ["home"],
     "/home": ["talha"],
-    "/home/talha": ["about", "projects", "experience", "contact", "fun"],
+    "/home/talha": ["about", "projects", "gamereviews", "experience", "contact", "fun"],
     "/home/talha/about": ["bio.txt", "interests.txt"],
-    "/home/talha/projects": ["visionnode.txt", "self_balancing_robot.txt", "digital_counter.txt"],
+    "/home/talha/projects": ["visionnode.txt", "jamdeck.txt"],
+    "/home/talha/gamereviews": ["index.txt"],
     "/home/talha/experience": ["taylor_systems.txt", "rocketry.txt"],
     "/home/talha/contact": ["email.txt", "github.txt", "linkedin.txt"],
     "/home/talha/fun": ["music.txt", "favorites.txt"],
@@ -181,6 +182,7 @@
     about: "/about/",
     musings: "/musings/",
     projects: "/projects/",
+    gamereviews: "/gamereviews/",
     home: "/",
   };
 
@@ -282,8 +284,9 @@
         "|   `-- interests.txt",
         "|-- projects",
         "|   |-- visionnode.txt",
-        "|   |-- self_balancing_robot.txt",
-        "|   `-- digital_counter.txt",
+        "|   `-- jamdeck.txt",
+        "|-- gamereviews",
+        "|   `-- index.txt",
         "|-- experience",
         "|   |-- taylor_systems.txt",
         "|   `-- rocketry.txt",

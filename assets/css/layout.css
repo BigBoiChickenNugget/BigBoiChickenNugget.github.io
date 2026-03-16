@@ -131,37 +131,3 @@
   padding: 12px 14px;
 }
 
-/* ── Decorative pixel-art stickers ── */
-/* All stickers: pixel-sharp, bottom-right corner of the panel */
-.setzer, .beck, .cob, .gurren, .persona {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  image-rendering: pixelated;
-  pointer-events: none;
-  opacity: 0.92;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,.50));
-  /* hard cap — never wider than 30% of the panel */
-  max-width: 30%;
-  max-height: 180px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
-
-/* per-sticker tweaks for natural composition */
-.setzer  { max-height: 170px; right: 16px; bottom: 8px; }
-.beck    { max-height: 180px; right: 10px; bottom: 0;   }
-.cob     {
-  /* cob.jpg is an album cover — treat it as a small framed thumbnail */
-  max-height: 140px;
-  max-width:  140px;
-  right: 16px;
-  bottom: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.55);
-  image-rendering: auto; /* photo, not pixel art */
-  opacity: 0.88;
-}
-.gurren  { max-height: 180px; right: 10px; bottom: 0;   }
-.persona { max-height: 200px; right: 10px; bottom: 0;   }
