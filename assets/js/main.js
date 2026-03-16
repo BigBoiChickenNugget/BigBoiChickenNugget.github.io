@@ -265,22 +265,17 @@
   }
 
   function renderHelp() {
-    appendLine(
-      [
-        "Available commands:",
-        "help      show this menu",
-        "neofetch  print a quick system card",
-        "ls        list directory contents",
-        "cd DIR    move between folders",
-        "pwd       print current path",
-        "cat FILE  read a text file",
-        "tree      show the fake filesystem",
-        "open X    open a site page or link target",
-        "play      start the number game",
-        "clear     clear the terminal",
-      ].join("\n"),
-      "terminal-system"
-    );
+    appendLine("Commands", "terminal-accent");
+    appendLine("help      - show this list", "terminal-system");
+    appendLine("neofetch  - system card", "terminal-system");
+    appendLine("ls        - list current directory", "terminal-system");
+    appendLine("cd DIR    - change directory", "terminal-system");
+    appendLine("pwd       - print current path", "terminal-system");
+    appendLine("cat FILE  - read a file", "terminal-system");
+    appendLine("tree      - show filesystem tree", "terminal-system");
+    appendLine("open X    - open a page or link", "terminal-system");
+    appendLine("play      - start the mini game", "terminal-system");
+    appendLine("clear     - clear terminal output", "terminal-system");
   }
 
   function renderTree() {

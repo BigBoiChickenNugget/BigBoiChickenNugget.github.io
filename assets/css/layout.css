@@ -1,6 +1,6 @@
 /* ── Max-width centering frame ── */
 .frame {
-  max-width: 1260px;
+  max-width: 1484px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 16px;
@@ -46,7 +46,7 @@
 /* ── Shell: sidebar + main ── */
 .shell {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 380px;
+  grid-template-columns: 220px 836px 400px;
   gap: 14px;
   align-items: start;
   margin-bottom: 14px;
@@ -61,7 +61,11 @@
 
 .shell > .sidebar-stack { grid-column: 1; }
 .shell > .panel--main { grid-column: 2; }
-.shell > .terminal-card { grid-column: 3; }
+.shell > .terminal-card {
+  grid-column: 3;
+  width: 400px;
+  transform: none;
+}
 
 @media (max-width: 860px) {
   .shell { grid-template-columns: 1fr; }
@@ -69,16 +73,24 @@
   .sidebar-stack { order: 2; width: auto; }
   .shell > .sidebar-stack,
   .shell > .panel--main,
-  .shell > .terminal-card { grid-column: 1; }
+  .shell > .terminal-card {
+    grid-column: 1;
+    width: auto;
+    transform: none;
+  }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1480px) {
+  .frame {
+    max-width: 1260px;
+  }
+
   .shell {
-    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr) 360px;
   }
 
   .shell > .terminal-card {
-    grid-column: 2;
+    width: 360px;
   }
 }
 
