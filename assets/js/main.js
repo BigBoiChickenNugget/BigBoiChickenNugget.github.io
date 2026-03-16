@@ -157,11 +157,9 @@
       "Taylor Systems - Embedded Systems Engineer Intern\n\nRedesigned Modbus RS-485 hardware, improved acquisition success from 83% to 98%, programmed ESP32/Arduino interfaces, and built MQTT telemetry simulation tooling.",
     "/home/talha/experience/rocketry.txt":
       "McMaster Rocketry - Controls Engineer\n\nWorking on STM32-based data acquisition and CAN communication hardware, firmware for sensor interfacing/telemetry, and avionics integration.",
-    "/home/talha/links/github.txt": "https://github.com/damhahlat",
-    "/home/talha/links/linkedin.txt": "https://www.linkedin.com/in/talha-a-ahmad/",
-    "/home/talha/links/resume.txt": "/assets/docs/resume_summer_2026.pdf",
-    "/home/talha/now/status.txt":
-      "Current focus:\n- STM32 and ESP32 firmware work\n- avionics and telemetry on McMaster Rocketry\n- turning projects into polished writeups",
+    "/home/talha/contact/email.txt": "talha05ahmad@gmail.com",
+    "/home/talha/contact/github.txt": "https://github.com/damhahlat",
+    "/home/talha/contact/linkedin.txt": "https://www.linkedin.com/in/talha-a-ahmad/",
     "/home/talha/fun/music.txt":
       "Favorite loop:\n- Celes' Theme\n- Feelings Soar with the Wind\n- To Zanarkand",
     "/home/talha/fun/favorites.txt":
@@ -171,12 +169,11 @@
   const directories = {
     "/": ["home"],
     "/home": ["talha"],
-    "/home/talha": ["about", "projects", "experience", "links", "now", "fun"],
+    "/home/talha": ["about", "projects", "experience", "contact", "fun"],
     "/home/talha/about": ["bio.txt", "interests.txt"],
     "/home/talha/projects": ["visionnode.txt", "self_balancing_robot.txt", "digital_counter.txt"],
     "/home/talha/experience": ["taylor_systems.txt", "rocketry.txt"],
-    "/home/talha/links": ["github.txt", "linkedin.txt", "resume.txt"],
-    "/home/talha/now": ["status.txt"],
+    "/home/talha/contact": ["email.txt", "github.txt", "linkedin.txt"],
     "/home/talha/fun": ["music.txt", "favorites.txt"],
   };
 
@@ -184,8 +181,6 @@
     about: "/about/",
     musings: "/musings/",
     projects: "/projects/",
-    links: "/links/",
-    now: "/now/",
     home: "/",
   };
 
@@ -292,12 +287,10 @@
         "|-- experience",
         "|   |-- taylor_systems.txt",
         "|   `-- rocketry.txt",
-        "|-- links",
+        "|-- contact",
+        "|   |-- email.txt",
         "|   |-- github.txt",
-        "|   |-- linkedin.txt",
-        "|   `-- resume.txt",
-        "|-- now",
-        "|   `-- status.txt",
+        "|   `-- linkedin.txt",
         "`-- fun",
         "    |-- music.txt",
         "    `-- favorites.txt",

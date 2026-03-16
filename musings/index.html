@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
   <script>
-    // If loaded directly (not via SPA), redirect to homepage which will load this content
     if (!document.referrer.includes(window.location.hostname) ||
         !window.history.state) {
       var path = window.location.pathname;
@@ -24,24 +23,13 @@
       <div class="prose">
         <h1>Musings</h1>
         <div class="ornament" aria-hidden="true"><span>✦</span></div>
-        <p class="subtle">Notes, ideas, and writeups that live somewhere between coursework and finished projects.</p>
-        <p>I want this section to capture the practical side of learning embedded systems: the weird bugs, the design tradeoffs, the parts that didn't work the first time, and the details that finally made something click.</p>
+        <p class="subtle">Posts that are less about deliverables and more about taste, reflection, and whatever has been stuck in my head lately.</p>
 
         <div class="stack-list">
           <div class="stack-item">
-            <h2>What will show up here</h2>
-            <ul>
-              <li>Firmware bring-up lessons from STM32 and ESP32 projects.</li>
-              <li>PCB design notes from telemetry, sensing, and communication hardware.</li>
-              <li>Control tuning and instrumentation thoughts from robotics work.</li>
-              <li>Reflections on student design teams, engineering process, and system tradeoffs.</li>
-              <li>Media and aesthetics that influence how I present technical work.</li>
-            </ul>
-          </div>
-
-          <div class="stack-item">
-            <h2>Why bother writing it down</h2>
-            <p>Not every useful thing belongs on a polished project page. Sometimes the most valuable takeaway is a failed test, an ugly workaround, or a debugging habit that saved hours later.</p>
+            <h2><a href="/musings/top-5-favourite-games/">My Top 5 Favourite Games</a></h2>
+            <p>Persona 5, Chrono Trigger, Hollow Knight, Celeste, and Danganronpa: Trigger Happy Havoc.</p>
+            <p><a href="/musings/top-5-favourite-games/">Read post</a></p>
           </div>
         </div>
       </div>

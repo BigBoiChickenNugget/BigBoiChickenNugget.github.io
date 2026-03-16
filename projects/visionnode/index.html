@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VisionNode • Talha</title>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+  <script>
+    if (!document.referrer.includes(window.location.hostname) ||
+        !window.history.state) {
+      var path = window.location.pathname;
+      if (path !== "/" && path !== "/index.html") {
+        window.location.replace("/?redirect=" + encodeURIComponent(path));
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <section id="spa-content" class="panel panel--main">
+      <div class="prose">
+        <p class="subtle"><a href="/projects/">← Back to Projects</a></p>
+        <h1>VisionNode</h1>
+        <div class="ornament" aria-hidden="true"><span>✦</span></div>
+        <p>VisionNode was a real-time facial recognition project built around a split embedded architecture: an ESP32-CAM handled image capture while an STM32 took care of control and display logic.</p>
+
+        <h2>What I wanted from it</h2>
+        <p>I wanted to build something that felt like an actual embedded systems project rather than a machine learning demo glued to a laptop. The point was to make lightweight inference live on constrained hardware and then move data between devices cleanly.</p>
+
+        <h2>Stack</h2>
+        <ul>
+          <li>ESP32-CAM for image capture.</li>
+          <li>STM32 for controller and display responsibilities.</li>
+          <li>Edge Impulse and TensorFlow Lite for training and deployment.</li>
+          <li>I2C and UART for communication between modules.</li>
+          <li>MbedOS for the embedded side of the system.</li>
+        </ul>
+
+        <h2>What I learned</h2>
+        <ul>
+          <li>Keeping responsibilities split across devices makes debugging and iteration much saner.</li>
+          <li>Embedded ML gets interesting when latency, memory, and communication constraints are all part of the problem.</li>
+          <li>A project like this becomes much more about systems design once multiple peripherals and protocols are involved.</li>
+        </ul>
+
+        <h2>Why it matters to me</h2>
+        <p>VisionNode is still one of the clearest examples of how I like to work: close to the hardware, careful about interfaces, and interested in projects where software only makes sense because the electronics are doing their part too.</p>
+      </div>
+    </section>
+  </body>
+</html>

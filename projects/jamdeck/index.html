@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JamDeck • Talha</title>
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+  <script>
+    if (!document.referrer.includes(window.location.hostname) ||
+        !window.history.state) {
+      var path = window.location.pathname;
+      if (path !== "/" && path !== "/index.html") {
+        window.location.replace("/?redirect=" + encodeURIComponent(path));
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <section id="spa-content" class="panel panel--main">
+      <div class="prose">
+        <p class="subtle"><a href="/projects/">← Back to Projects</a></p>
+        <h1>JamDeck</h1>
+        <div class="ornament" aria-hidden="true"><span>✦</span></div>
+        <p>JamDeck is a MakeUofT 2026-winning project, and I want it here because it shows another side of how I like to build: fast, collaborative, and a little more product-shaped than my usual firmware-heavy work.</p>
+
+        <h2>Why I’m proud of it</h2>
+        <p>Hackathon projects can easily turn into rushed prototypes with a flashy demo and not much else. What made JamDeck stand out to me was that it still felt cohesive. It had a clear identity, a real concept behind it, and enough polish to earn a win at MakeUofT 2026.</p>
+
+        <h2>What it represents</h2>
+        <ul>
+          <li>Working quickly without losing the shape of the idea.</li>
+          <li>Building something fun and memorable rather than just technically correct.</li>
+          <li>Collaborating under time pressure and still landing a project with personality.</li>
+        </ul>
+
+        <h2>Why it belongs next to my embedded work</h2>
+        <p>Even though JamDeck lives in a different lane than my more hardware-oriented projects, it matters for the same reason: I like making things that feel intentional. Whether it’s firmware, controls, or a hackathon build, the work is better when it has both technical substance and some kind of soul.</p>
+      </div>
+    </section>
+  </body>
+</html>
