@@ -97,6 +97,8 @@
         align-items: stretch; /* let canvas fill height */
         gap: 8px;
         flex-wrap: nowrap;
+        justify-content: flex-end;
+        min-width: 0;
       }
 
       /* Matrix canvas */
@@ -105,6 +107,8 @@
         align-self: center;
         opacity: 0.90;
         height: 36px;
+        width: clamp(390px, 45vw, 640px);
+        flex: 0 0 auto;
       }
 
       /* Pills need to re-center themselves since topbar stretches */
@@ -364,8 +368,12 @@
 
       // Size canvas to match topbar height exactly
       function resize() {
-        canvas.height = 36;
-        canvas.width  = 180;
+        var dpr = Math.max(1, window.devicePixelRatio || 1);
+        var cssHeight = 36;
+        var cssWidth = Math.round(canvas.getBoundingClientRect().width || 320);
+        canvas.height = Math.round(cssHeight * dpr);
+        canvas.width  = Math.round(cssWidth * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         initDrops();
       }
 
@@ -387,8 +395,8 @@
       }
 
       function draw() {
-        var h = canvas.height;
-        var w = canvas.width;
+        var h = canvas.height / (window.devicePixelRatio || 1);
+        var w = canvas.width / (window.devicePixelRatio || 1);
         var cols = Math.floor(w / FONT);
 
         // Fade — transparent so topbar bg shows through
@@ -429,6 +437,7 @@
       }
 
       resize();
+      window.addEventListener("resize", resize);
       setInterval(draw, 55);
     })();
     </script>
