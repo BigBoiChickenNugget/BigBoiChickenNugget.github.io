@@ -13,7 +13,6 @@
     if (!document.referrer.includes(window.location.hostname) ||
         !window.history.state) {
       var path = window.location.pathname;
-      // Only redirect if we're not already on index
       if (path !== "/" && path !== "/index.html") {
         window.location.replace("/?redirect=" + encodeURIComponent(path));
       }
@@ -25,19 +24,34 @@
       <div class="prose">
         <h1>About</h1>
         <div class="ornament" aria-hidden="true"><span>✦</span></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <h2>What I'm into</h2>
+        <p>I'm Talha Ahmad, a Toronto-based mechatronics engineering student at McMaster University. Most of what I build lives at the intersection of firmware, electronics, and systems thinking.</p>
+        <p>Embedded work is what excites me most. I like bringing up microcontrollers, interfacing with sensors, designing communication paths, and turning a rough prototype into something stable enough to trust.</p>
+        <p>Between internship work, design team projects, and personal builds, I've grown into the kind of engineer who enjoys both the low-level details and the bigger system around them.</p>
+
+        <h2>What I care about</h2>
         <ul>
-          <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-          <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+          <li>Embedded firmware on STM32 and ESP32-class hardware.</li>
+          <li>Communication and telemetry systems built around UART, I2C, RS-485, CAN, and MQTT.</li>
+          <li>Controls, sensing, and avionics-adjacent engineering.</li>
+          <li>Projects that feel technically solid and personally meaningful.</li>
         </ul>
+
+        <h2>Technical toolkit</h2>
+        <ul>
+          <li>Languages: C, C++, Python, MATLAB, Java, and Rust.</li>
+          <li>Embedded and hardware: ESP32, STM32, PCB design in KiCad and Altium, FreeRTOS, and MbedOS.</li>
+          <li>Tools: Git, Docker, Linux, VS Code, soldering, and oscilloscope debugging.</li>
+          <li>CAD and mechanical support: Fusion 360, Inventor, and Onshape.</li>
+        </ul>
+
+        <h2>Outside engineering</h2>
+        <p>The rest of this site's personality comes from the same things that shape how I like to build: JRPG soundtracks, anime, terminal aesthetics, and projects that have some character instead of feeling sterile.</p>
+
         <h2>Contact</h2>
         <ul>
-          <li>Email: lorem@ipsum.dev</li>
-          <li>GitHub: @lorem</li>
-          <li>LinkedIn: /in/lorem</li>
+          <li>Email: <a href="mailto:talha05ahmad@gmail.com">talha05ahmad@gmail.com</a></li>
+          <li>GitHub: <a href="https://github.com/damhahlat" target="_blank" rel="noreferrer">github.com/damhahlat</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/talha-a-ahmad/" target="_blank" rel="noreferrer">linkedin.com/in/talha-a-ahmad</a></li>
         </ul>
       </div>
     </section>

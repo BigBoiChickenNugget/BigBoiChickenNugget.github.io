@@ -13,7 +13,6 @@
     if (!document.referrer.includes(window.location.hostname) ||
         !window.history.state) {
       var path = window.location.pathname;
-      // Only redirect if we're not already on index
       if (path !== "/" && path !== "/index.html") {
         window.location.replace("/?redirect=" + encodeURIComponent(path));
       }
@@ -25,12 +24,14 @@
       <div class="prose">
         <h1>Now</h1>
         <div class="ornament" aria-hidden="true"><span>✦</span></div>
-        <p class="subtle">What I am up to lately.</p>
+        <p class="subtle">A snapshot of what has my attention lately.</p>
         <ul>
-          <li>Duis aute irure dolor in reprehender</li>
-          <li>Lorem ipsum dolor sit amet, consectetur </li>
-          <li>Ut enim ad minim veniam, quis nostrud </li>
+          <li>Studying mechatronics at McMaster with a strong focus on embedded systems, circuits, instrumentation, and algorithms.</li>
+          <li>Working on controls and avionics-adjacent problems with McMaster Rocketry.</li>
+          <li>Going deeper on STM32 and ESP32 development, especially peripheral interfaces, telemetry, and debugging workflows.</li>
+          <li>Trying to make my projects feel more complete through better presentation, cleaner documentation, and stronger systems-level thinking.</li>
         </ul>
+        <p>This page is intentionally temporary. It's less a biography and more a quick read on what I'm building toward right now.</p>
       </div>
       <img class="persona" src="/assets/img/persona.png" alt="" aria-hidden="true" />
     </section>

@@ -13,7 +13,6 @@
     if (!document.referrer.includes(window.location.hostname) ||
         !window.history.state) {
       var path = window.location.pathname;
-      // Only redirect if we're not already on index
       if (path !== "/" && path !== "/index.html") {
         window.location.replace("/?redirect=" + encodeURIComponent(path));
       }
@@ -25,11 +24,42 @@
       <div class="prose">
         <h1>Projects</h1>
         <div class="ornament" aria-hidden="true"><span>✦</span></div>
-        <p class="subtle">A running list of builds.</p>
-        <ul>
-          <li>Duis aute irure dolor in reprehenderit in </li>
-          <li>Lorem ipsum dolor sit amet, consectetur adipi</li>
-        </ul>
+        <p class="subtle">A few builds that best represent how I like to work: low-level, hands-on, and systems-oriented.</p>
+
+        <div class="stack-list">
+          <div class="stack-item">
+            <h2>VisionNode</h2>
+            <p><strong>ESP32-CAM, STM32, Edge Impulse, TensorFlow Lite, MbedOS</strong></p>
+            <p>A real-time facial recognition system that split image capture and control responsibilities across two embedded devices.</p>
+            <ul>
+              <li>Used an ESP32-CAM for imaging and an STM32 for control and display logic.</li>
+              <li>Trained and deployed lightweight machine learning models with Edge Impulse and TensorFlow Lite.</li>
+              <li>Integrated I2C and UART communication between the camera module and controller.</li>
+            </ul>
+          </div>
+
+          <div class="stack-item">
+            <h2>Self-Balancing Robot</h2>
+            <p><strong>ESP32, MPU6050, Fusion 360, PID Control</strong></p>
+            <p>A two-wheel self-balancing robot that brought together embedded programming, CAD, fabrication, and control tuning.</p>
+            <ul>
+              <li>Designed and 3D printed the chassis in Fusion 360.</li>
+              <li>Implemented a PID control loop using MPU6050 IMU feedback for stabilization.</li>
+              <li>Tuned controller gains through test runs and UART logging to achieve sub-5 degree error.</li>
+            </ul>
+          </div>
+
+          <div class="stack-item">
+            <h2>Digital Counter Display</h2>
+            <p><strong>JK Flip-Flops, 7-Segment Displays, Multisim</strong></p>
+            <p>A sequential logic build focused on timing behavior, stable transitions, and getting the fundamentals right.</p>
+            <ul>
+              <li>Designed a circuit using JK flip-flops and multiplexers to iterate through a student ID.</li>
+              <li>Wired and debugged the timing logic to keep the 7-segment display consistent and readable.</li>
+              <li>Strengthened the digital logic habits that still matter in more complex embedded systems work.</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <img class="cob" src="/assets/img/cob.jpg" alt="" aria-hidden="true" />
     </section>

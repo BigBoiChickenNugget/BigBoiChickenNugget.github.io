@@ -13,7 +13,6 @@
     if (!document.referrer.includes(window.location.hostname) ||
         !window.history.state) {
       var path = window.location.pathname;
-      // Only redirect if we're not already on index
       if (path !== "/" && path !== "/index.html") {
         window.location.replace("/?redirect=" + encodeURIComponent(path));
       }
@@ -25,10 +24,24 @@
       <div class="prose">
         <h1>Links</h1>
         <div class="ornament" aria-hidden="true"><span>✦</span></div>
-        <ul>
-          <li><a href="#" target="_blank" rel="noreferrer">GitHub (placeholder)</a></li>
-          <li><a href="#" target="_blank" rel="noreferrer">Resume (placeholder)</a></li>
-        </ul>
+        <p class="subtle">The practical stuff.</p>
+
+        <div class="stack-list">
+          <div class="stack-item">
+            <h2>Find me here</h2>
+            <ul>
+              <li><a href="mailto:talha05ahmad@gmail.com">talha05ahmad@gmail.com</a></li>
+              <li><a href="https://github.com/damhahlat" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/talha-a-ahmad/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="/assets/docs/resume_summer_2026.pdf" target="_blank" rel="noreferrer">Resume</a></li>
+            </ul>
+          </div>
+
+          <div class="stack-item">
+            <h2>Best reasons to reach out</h2>
+            <p>Embedded systems, firmware, hardware design, controls, avionics, student engineering teams, or any project where software and electronics actually have to work together in the real world.</p>
+          </div>
+        </div>
       </div>
       <img class="gurren" src="/assets/img/gurren.png" alt="" aria-hidden="true" />
     </section>
